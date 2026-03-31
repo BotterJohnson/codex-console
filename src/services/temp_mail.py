@@ -300,8 +300,8 @@ class TempMailService(BaseEmailService):
 
         # 优先使用用户级 JWT，回退到 admin API
         cached = self._email_cache.get(email, {})
-        jwt = cached.get("jwt")
-
+        # jwt = cached.get("jwt")
+        jwt = False
         while time.time() - start_time < timeout:
             try:
                 if jwt:

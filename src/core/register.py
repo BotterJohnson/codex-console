@@ -9,6 +9,7 @@ import time
 import logging
 import secrets
 import string
+from time import sleep
 from typing import Optional, Dict, Any, Tuple, Callable
 from dataclasses import dataclass
 from datetime import datetime
@@ -455,6 +456,7 @@ class RegistrationEngine:
     def _complete_token_exchange(self, result: RegistrationResult) -> bool:
         """在登录态已建立后，继续完成 workspace 和 OAuth token 获取。"""
         self._log("等待登录验证码到场，最后这位嘉宾还在路上...")
+        sleep(10)
         code = self._get_verification_code()
         if not code:
             result.error_message = "获取验证码失败"
